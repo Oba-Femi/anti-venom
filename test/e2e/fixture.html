@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Anti-Venom E2E fixture</title>
+    <script>
+      window.results = {};
+      function mark(name, ok) { window.results[name] = ok ? 'loaded' : 'blocked'; }
+    </script>
+  </head>
+  <body>
+    <article id="content">
+      <h1>Legitimate article</h1>
+      <p class="article-body">This content must stay visible.</p>
+      <div class="ad-free-zone">Not an ad.</div>
+    </article>
+
+    <!-- Cosmetic targets (EasyList generic filters) -->
+    <div class="sponsored-ad" id="t-keyed-class">keyed class</div>
+    <div id="ad-slot">keyed id</div>
+    <div id="div-gpt-ad-1234">unkeyed attribute selector</div>
+    <div class="custom-hide" id="t-custom">custom cosmetic filter</div>
+
+    <!-- Network targets -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" onload="mark('adsense', 1)" onerror="mark('adsense', 0)"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEST" onload="mark('gtm', 1)" onerror="mark('gtm', 0)"></script>
+    <img src="https://www.facebook.com/tr?id=1&ev=PageView&noscript=1" onload="mark('fbpixel', 1)" onerror="mark('fbpixel', 0)" width="1" height="1" alt="" />
+    <script async src="https://openfpcdn.io/fingerprintjs/v4" onload="mark('fingerprint', 1)" onerror="mark('fingerprint', 0)"></script>
+    <script async src="/custom-blocked.js" onload="mark('custom', 1)" onerror="mark('custom', 0)"></script>
+
+    <!-- Controls: must never be blocked -->
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" onload="mark('control-cdn', 1)" onerror="mark('control-cdn', 0)"></script>
+    <script async src="/static/app.js" onload="mark('control-local', 1)" onerror="mark('control-local', 0)"></script>
+    <!-- Compatibility: authentication, payments and CAPTCHA providers -->
+    <script async src="https://js.stripe.com/v3/" onload="mark('compat-stripe', 1)" onerror="mark('compat-stripe', 0)"></script>
+    <script async src="https://www.paypal.com/sdk/js?client-id=sb" onload="mark('compat-paypal', 1)" onerror="mark('compat-paypal', 0)"></script>
+    <script async src="https://accounts.google.com/gsi/client" onload="mark('compat-google-signin', 1)" onerror="mark('compat-google-signin', 0)"></script>
+    <script async src="https://www.google.com/recaptcha/api.js" onload="mark('compat-recaptcha', 1)" onerror="mark('compat-recaptcha', 0)"></script>
+    <script async src="https://challenges.cloudflare.com/turnstile/v0/api.js" onload="mark('compat-turnstile', 1)" onerror="mark('compat-turnstile', 0)"></script>
+    <script async src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js" onload="mark('compat-apple-signin', 1)" onerror="mark('compat-apple-signin', 0)"></script>
+
+    <script>
+      // Dynamically inserted ad container: exercises the MutationObserver path.
+      setTimeout(() => {
+        const d = document.createElement('div');
+        d.id = 't-dynamic';
+        d.innerHTML = '<span class="sponsored-ad" id="t-dynamic-inner">late ad</span>';
+        document.body.appendChild(d);
+      }, 400);
+    </script>
+  </body>
+</html>
