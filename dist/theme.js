@@ -1,0 +1,1 @@
+"use strict";(()=>{var m="anti-venom.theme";function o(){try{let e=localStorage.getItem(m);return e==="light"||e==="dark"?e:"system"}catch{return"system"}}function t(e=o()){e==="system"?delete document.documentElement.dataset.theme:document.documentElement.dataset.theme=e}t();})();

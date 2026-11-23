@@ -1,0 +1,35 @@
+[Adblock Plus 2.0]
+! Title: Anti-Venom Fingerprinting Protection
+! Description: Third-party browser-fingerprinting scripts used for cross-site tracking.
+! License: MIT (part of Anti-Venom)
+! Expires: 30 days
+!
+! Inclusion policy
+! - Only vendors/libraries whose primary purpose is identifying browsers across sites.
+! - Rules are third-party only, so a site that self-hosts a script for its own
+!   purposes is not affected.
+! - Fraud-prevention and payment-security services (e.g. bank/PSP device
+!   checks, CAPTCHA providers) are deliberately excluded: blocking them breaks
+!   logins and payments. EasyPrivacy covers many additional trackers.
+!
+! --- FingerprintJS (commercial identification service and CDN endpoints) ---
+||fpjs.io^$third-party
+||fpcdn.io^$third-party
+||fpnpmcdn.net^$third-party
+||openfpcdn.io^$third-party
+||fpjscdn.net^$third-party
+! --- Open-source fingerprinting libraries served from public CDNs ---
+||cdn.jsdelivr.net/npm/@fingerprintjs/$script,third-party
+||cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/$script,third-party
+||cdnjs.cloudflare.com/ajax/libs/fingerprintjs/$script,third-party
+||cdnjs.cloudflare.com/ajax/libs/ClientJS/$script,third-party
+||cdn.jsdelivr.net/npm/clientjs@$script,third-party
+||unpkg.com/@fingerprintjs/$script,third-party
+! --- Cross-site device-graph / identity resolution vendors ---
+||bluecava.com^$third-party
+||augur.io^$third-party
+||tapad.com^$third-party
+||crwdcntrl.net^$third-party
+||id5-sync.com^$third-party
+||liveintent.com^$third-party
+||adsrvr.org/track/$third-party

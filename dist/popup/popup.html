@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anti-Venom</title>
+    <script src="../theme.js"></script>
+    <link rel="stylesheet" href="../ui.css" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup" data-state="loading">
+      <header class="bar">
+        <div class="brand">
+          <img src="../icons/on-32.png" alt="" width="22" height="22" id="brand-icon" />
+          <span>Anti-Venom</span>
+        </div>
+        <div class="bar-actions">
+          <button class="icon-btn" id="open-dashboard" title="Open dashboard" aria-label="Open dashboard"></button>
+          <button class="icon-btn" id="open-settings" title="Settings" aria-label="Open settings"></button>
+        </div>
+      </header>
+
+      <section class="status" aria-live="polite">
+        <div class="status-text">
+          <span class="pill" id="status-pill">Loading</span>
+          <h1 id="status-title">…</h1>
+        </div>
+        <button class="power" id="global-toggle" role="switch" aria-checked="false" aria-label="Protection on all websites">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 3v8M6.3 6.6a8 8 0 1 0 11.4 0" /></svg>
+        </button>
+      </section>
+
+      <section class="card site" id="site-card"></section>
+
+      <section class="card page" id="page-card">
+        <div class="page-head">
+          <div>
+            <div class="label">Blocked on this page</div>
+            <div class="big" id="blocked-tab">0</div>
+          </div>
+          <div class="chips" id="category-chips"></div>
+        </div>
+        <details id="blocked-details">
+          <summary id="blocked-summary">View blocked domains</summary>
+          <ul class="blocked-list" id="blocked-list"></ul>
+        </details>
+      </section>
+
+      <footer class="foot">
+        <span><strong id="today">0</strong> today</span>
+        <span><strong id="blocked-total">0</strong> all time</span>
+      </footer>
+
+      <div class="reload" id="reload-banner" hidden>
+        <span>Reload to apply changes to this page.</span>
+        <button class="btn small" id="reload-btn">Reload</button>
+      </div>
+      <p class="error" id="popup-error" role="alert" hidden></p>
+    </main>
+    <script src="../popup.js"></script>
+  </body>
+</html>
