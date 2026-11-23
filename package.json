@@ -1,0 +1,26 @@
+{
+  "name": "anti-venom-adblocker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Privacy-first Manifest V3 ad and tracker blocker built on Declarative Net Request.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "filters:fetch": "node scripts/fetch-filters.ts",
+    "build": "node scripts/build.ts",
+    "build:dev": "node scripts/build.ts --dev",
+    "watch": "node scripts/build.ts --dev --watch",
+    "typecheck": "tsc --noEmit -p .",
+    "test": "node --test \"test/**/*.test.ts\"",
+    "test:e2e": "node test/e2e/run.ts",
+    "check": "npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.7",
+    "@types/node": "^26.6.6",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  }
+}

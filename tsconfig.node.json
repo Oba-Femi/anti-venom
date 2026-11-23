@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["es2023"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": ["node", "chrome"]
+  },
+  "include": ["scripts/**/*.ts", "test/**/*.ts", "src/filters/**/*.ts", "src/shared/**/*.ts"]
+}
